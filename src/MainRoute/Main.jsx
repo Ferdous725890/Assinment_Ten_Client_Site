@@ -4,6 +4,8 @@ import AllReviews from "../Component/AllReviews";
 import MyReviews from "../Component/Navbar/MyReviews";
 import GameWatchList from "../Component/Navbar/GameWatchList";
 import AddReviews from "../Component/Navbar/AddReviews";
+import Rejister from "../Component/Navbar/Register";
+import Login from "../Component/Navbar/Login";
   
   const router = createBrowserRouter([
     {
@@ -26,6 +28,14 @@ import AddReviews from "../Component/Navbar/AddReviews";
     {
       path: "/gameWatchList",
       element:<GameWatchList></GameWatchList>
+    },
+    {
+      path: "/login",
+      element:<Login></Login>
+    },
+    {
+      path: "/rejister",
+      element:<Rejister></Rejister>
     },
   ]);
 

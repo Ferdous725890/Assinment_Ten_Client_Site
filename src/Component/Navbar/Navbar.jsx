@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Links } from "react-router-dom";
 
 const Navbar = () => {
     // const links = ()=>{
@@ -23,6 +23,12 @@ const Navbar = () => {
           </div>
         </div>
         <div class="flex-none">
+            {/* // ! LogIN  */}
+            <div>
+            <Link to="/login">
+            Login
+              </Link>
+            </div>
           <div class="dropdown justify-end">
             <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
               <div class="indicator">
@@ -57,6 +63,7 @@ const Navbar = () => {
             </div>
           </div>
           <div class="dropdown dropdown-end">
+          
             <div
               tabindex="0"
               role="button"
@@ -82,9 +89,9 @@ const Navbar = () => {
               <li>
                 <a>Settings</a>
               </li>
-              <li>
+              <>
                 <a>Logout</a>
-              </li>
+              </>
             </ul>
           </div>
         </div>
