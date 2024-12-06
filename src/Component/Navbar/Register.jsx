@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
+import Navbar from "./Navbar";
 
 const Register = () => {
   const { userRejister } = useContext(AuthContext);
@@ -23,6 +24,7 @@ const Register = () => {
     }
   return (
     <div>
+         <Navbar></Navbar>
       <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content flex-col">
           <div className="text-center lg:text-left">

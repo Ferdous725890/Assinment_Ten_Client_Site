@@ -1,14 +1,20 @@
-import { Link, Links } from "react-router-dom";
+import { useContext } from "react";
+import { Link} from "react-router-dom";
+import { AuthContext } from "./AuthProvider";
+import { auth } from "../Firebase.init";
 
 const Navbar = () => {
-    // const links = ()=>{
-    //     <Link to="/">Home</Link>
-    // }
+  const { user, userLogOut } = useContext(AuthContext);
+  const handelLogOute = () =>{
+    userLogOut()
+  }
   return (
     <div>
-      <div class="navbar bg-base-100 border border-red-500 justify-between">
-        <div class=" border border-red-500">
+      <div class="navbar bg-base-100 border  justify-between">
+        <div class=" border ">
           <a class="text-xl">Game Review</a>
+          <p className="ml-10 font-bold text"> {user?.email} </p>
+         
         </div>
         <div>
           <div className="navbar-center hidden lg:flex">
@@ -24,11 +30,7 @@ const Navbar = () => {
         </div>
         <div class="flex-none">
             {/* // ! LogIN  */}
-            <div>
-            <Link to="/login">
-            Login
-              </Link>
-            </div>
+           
           <div class="dropdown justify-end">
             <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
               <div class="indicator">
@@ -62,7 +64,9 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          <div class="dropdown dropdown-end">
+          {
+            user ? 
+            <div class="dropdown dropdown-end">
           
             <div
               tabindex="0"
@@ -73,6 +77,7 @@ const Navbar = () => {
                 <img
                   alt="Tailwind CSS Navbar component"
                   src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  
                 />
               </div>
             </div>
@@ -90,10 +95,17 @@ const Navbar = () => {
                 <a>Settings</a>
               </li>
               <>
-                <a>Logout</a>
+               <button onClick={handelLogOute}>Logout</button>
               </>
             </ul>
           </div>
+            :
+            <div>
+            <Link to="/login">
+            Login
+              </Link>
+            </div>
+          }
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AuthContext } from './AuthProvider';
-
+import { Link } from 'react-router-dom';
+import Navbar from './Navbar';
 const Login = () => {
     const { userLogIn } = useContext(AuthContext)
     const handleLogIn = (event)=>{
@@ -9,18 +10,31 @@ const Login = () => {
             const email  = form.email.value;
             const password  = form.password.value;
             const loginuser = {email, password}
+            console.log(email, password);
             console.log(loginuser);
             userLogIn(email, password)
             .then(result =>{
-              console.log(result.user);
+              console.log(result.user,"user creating ");
+              
             })
             .catch(error=>{
               console.log(error);
             })
-           
+           fetch("http://localhost:5000/users",{
+           method:"POST",
+           headers:{
+            "content-type":"application/json"
+           },
+           body:JSON.stringify(loginuser)
+           })
+           .then(res=>res.json())
+           .then(data=>{
+            console.log(data,"user data");
+           })
     }
     return (
         <div>
+             <Navbar></Navbar>
              <div>
       <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content flex-col">
@@ -62,6 +76,11 @@ const Login = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
               </div>
+              <p>Creating Account
+              <Link to="/rejister">
+            Register
+              </Link>
+              </p>
             </form>
           </div>
         </div>
