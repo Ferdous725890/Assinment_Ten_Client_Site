@@ -1,23 +1,33 @@
 import { useContext } from "react";
-import { Link} from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import { auth } from "../Firebase.init";
+import ChangeThem from "./ThemChang";
+
 
 const Navbar = () => {
   const { user, userLogOut } = useContext(AuthContext);
-  const handelLogOute = () =>{
+  const navigate = useNavigate()
+  const handleLogOut = () => {
     userLogOut()
-  }
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        console.error("Logout failed:", error);
+      });
+  };
   return (
     <div>
       <div class="navbar bg-base-100 border  justify-between">
         <div class=" border ">
           <a class="text-xl">Game Review</a>
-          <p className="ml-10 font-bold text"> {user?.email} </p>
+          {/* <p className="ml-10 font-bold text"> {user?.email} </p> */}
+          <p className="ml-10 font-bold text text red "> {user?.email} </p>
          
         </div>
         <div>
-          <div className="navbar-center hidden lg:flex">
+          <div className="navbar-center  lg:flex">
             <ul className="menu menu-horizontal px-1">
               <Link className="text-blue-700 font-bold text-center ml-5 border py-3 px-4 rounded-lg" to="/">Home</Link>
               <Link className="text-blue-700 font-bold text-center ml-5 border py-3 px-4 rounded-lg" to="/allreciews">All Reviews</Link>
@@ -32,37 +42,7 @@ const Navbar = () => {
             {/* // ! LogIN  */}
            
           <div class="dropdown justify-end">
-            <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
-              <div class="indicator">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-                <span class="badge badge-sm indicator-item">8</span>
-              </div>
-            </div>
-            <div
-              tabindex="0"
-              class="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
-            >
-              <div class="card-body">
-                <span class="text-lg font-bold">8 Items</span>
-                <span class="text-info">Subtotal: $999</span>
-                <div class="card-actions">
-                  <button class="btn btn-primary btn-block">View cart</button>
-                </div>
-              </div>
-            </div>
+           <ChangeThem></ChangeThem>
           </div>
           {
             user ? 
@@ -74,11 +54,9 @@ const Navbar = () => {
               class="btn btn-ghost btn-circle avatar"
             >
               <div class="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                  
-                />
+               {
+                user?  <img src={user.photoURL} alt="" /> :"user nei"
+               }
               </div>
             </div>
             <ul
@@ -92,10 +70,11 @@ const Navbar = () => {
                 </a>
               </li>
               <li>
-                <a>Settings</a>
+              <p className="ml-10 font-bold text text red "> {user?.displayName} </p>
+
               </li>
               <>
-               <button onClick={handelLogOute}>Logout</button>
+               <button onClick={handleLogOut}>Logout</button>
               </>
             </ul>
           </div>
@@ -106,6 +85,11 @@ const Navbar = () => {
               </Link>
             </div>
           }
+
+
+
+
+          
         </div>
       </div>
     </div>

@@ -17,6 +17,7 @@ const HighestGame = ({ highestGame }) => {
             <h2 className='text-lg font-bold mt-2'>{gameTitle}</h2>
             <p className='text-gray-600'>Rating: {gameRating}</p>
             <p className='text-sm text-gray-500'>{description?.slice(0, 100)}...</p>
+            <p>hello</p>
             <button 
                 onClick={() => handleDetails(_id)} 
                 className='mt-2 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600'>

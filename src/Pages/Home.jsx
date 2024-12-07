@@ -2,6 +2,12 @@ import React from "react";
 import Navbar from "../Component/Navbar/Navbar";
 import Footer from "./Footer";
 import { Outlet } from "react-router-dom";
+import CarouselSlider from "../Component/Navbar/Test";
+import CenterMode from "../Component/Navbar/testone";
+// import CarouselSlider from "../Component/Navbar/Test";
+// import HighestGame from "../Component/Navbar/HighestGame";
+// import CenterMode from "../Component/Navbar/Test";
+
 
 
 const Home = () => {
@@ -9,59 +15,19 @@ const Home = () => {
     <div>
       <header className="container mx-auto w-11/12">
         <Navbar></Navbar>
+        {/* <CarouselSlider></CarouselSlider> */}
+
+        <CenterMode></CenterMode>
       </header >
-      <main className="container mx-auto w-11/12" >
-        <div className="carousel w-full">
-          <div id="item1" className="carousel-item w-full">
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp"
-              className="w-full"
-            />
-          </div>
-          <div id="item2" className="carousel-item w-full">
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp"
-              className="w-full"
-            />
-          </div>
-          <div id="item3" className="carousel-item w-full">
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp"
-              className="w-full"
-            />
-          </div>
-          <div id="item4" className="carousel-item w-full">
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp"
-              className="w-full"
-            />
-          </div>
-        </div>
-        <div className="flex w-full justify-center gap-2 py-2">
-          <a href="#item1" className="btn btn-xs">
-            1
-          </a>
-          <a href="#item2" className="btn btn-xs">
-            2
-          </a>
-          <a href="#item3" className="btn btn-xs">
-            3
-          </a>
-          <a href="#item4" className="btn btn-xs">
-            4
-          </a>
-        </div>
-
-      <div>
-        <Outlet>
-        </Outlet>
-      </div>
-
-
-
+      <main className="">
+        <Outlet></Outlet>
+        {/* <CarouselSlider></CarouselSlider> */}
+        {/* <CenterMod></CenterMode> */}
+        {/* <CenterMode></CenterMode> */}
+    
       </main>
 
-      <footer className="mt-10">
+      <footer className="">
         <Footer></Footer>
       </footer>
     </div>

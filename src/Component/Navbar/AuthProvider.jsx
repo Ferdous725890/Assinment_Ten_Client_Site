@@ -5,40 +5,43 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true); // Initial loading state
+  const [loading, setLoading] = useState(true); 
+  const googleAuthProvider = new GoogleAuthProvider()
 
-  // রেজিস্ট্রেশন ফাংশন
   const userRejister = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  // লগইন ফাংশন
+
   const userLogIn = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  // লগআউট ফাংশন
+  const googleLogIn = () => {
+    return signInWithPopup(auth, googleAuthProvider);
+  };
   const userLogOut = () => {
     setLoading(true);
     return signOut(auth);
   };
 
-  // Firebase এর user state ট্র্যাক করা
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser); // বর্তমান ব্যবহারকারী সেট করা
-      setLoading(false); // লোডিং শেষ
+      setUser(currentUser); 
+      setLoading(false); 
     });
 
-    // Clean up function
+    
     return () => unsubscribe();
   }, []);
 
@@ -48,6 +51,7 @@ const AuthProvider = ({ children }) => {
     userRejister,
     userLogIn,
     userLogOut,
+    googleLogIn
   };
 
   return (

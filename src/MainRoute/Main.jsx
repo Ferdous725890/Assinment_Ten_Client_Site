@@ -9,6 +9,8 @@ import Login from "../Component/Navbar/Login";
 import HighestRatedGame from "../Component/Navbar/HighestRatedGame";
 import ReviewsDetaisPageSpecifick from "../Component/Navbar/ReviewsDetaisPageSpecifick";
 import Edite from "../Component/Navbar/Edite";
+import ProtectedRoute from "../Component/Navbar/PrivateRoute";
+import CarouselSlider from "../Component/Navbar/Test";
 
 const router = createBrowserRouter([
   {
@@ -19,7 +21,11 @@ const router = createBrowserRouter([
         path: "/",
         element: <HighestRatedGame></HighestRatedGame>,
         loader: () => fetch('http://localhost:5000/reviews')
-      }
+      },
+      // {
+      //   path:"/",
+      //   element: <CarouselSlider></CarouselSlider>
+      // }
     ]
   },
   {
@@ -29,15 +35,25 @@ const router = createBrowserRouter([
   },
   {
     path: "/addReviews",
-    element: <AddReviews></AddReviews>
+    element: <ProtectedRoute>
+
+      <AddReviews></AddReviews>
+    </ProtectedRoute>
+    
   },
   {
     path: "/myReviews",
-    element: <MyReviews></MyReviews>
+    element: <ProtectedRoute>
+
+      <MyReviews></MyReviews>
+    </ProtectedRoute>
+    
   },
   {
     path: "/gameWatchList",
-    element: <GameWatchList></GameWatchList>
+    element:<ProtectedRoute>
+      <GameWatchList></GameWatchList>
+    </ProtectedRoute>
   },
   {
     path: "/login",
@@ -56,7 +72,8 @@ const router = createBrowserRouter([
     element:<Edite></Edite>,
     loader: ({params}) => fetch(`http://localhost:5000/reviews/${params.id}`)
 
-  }
+  },
+ 
  
 ]);
 

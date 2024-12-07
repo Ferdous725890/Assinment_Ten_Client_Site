@@ -20,7 +20,7 @@ const AddReviews = () => {
       description,
       coverimage,
       publishingyear,
-      user_email: user.email,
+      user_email: user?.email,
     
     };
 
@@ -49,7 +49,7 @@ const AddReviews = () => {
 
       <div className="p-4">
         <h2 className="text-2xl font-bold mb-4">Submit Your Review</h2>
-        <h2>{user.email}</h2>
+        <h2>{user?.email}</h2>
         <form onSubmit={handleReviewSubmit}>
           <div className="mb-4">
             <label htmlFor="gametitle" className="block font-medium mb-1">
