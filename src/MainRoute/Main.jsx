@@ -11,11 +11,14 @@ import ReviewsDetaisPageSpecifick from "../Component/Navbar/ReviewsDetaisPageSpe
 import Edite from "../Component/Navbar/Edite";
 import ProtectedRoute from "../Component/Navbar/PrivateRoute";
 import CarouselSlider from "../Component/Navbar/Test";
+import Page404 from "../Component/Navbar/errorPage";
+import Rating from "../Component/Navbar/testsone";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home></Home>,
+   
     children: [
       {
         path: "/",
@@ -73,6 +76,14 @@ const router = createBrowserRouter([
     loader: ({params}) => fetch(`http://localhost:5000/reviews/${params.id}`)
 
   },
+  {
+    path:"*",
+    element:<Page404></Page404>
+  },
+  // {
+  //   path:"reating",
+  //   element:<Rating></Rating>
+  // }
  
  
 ]);

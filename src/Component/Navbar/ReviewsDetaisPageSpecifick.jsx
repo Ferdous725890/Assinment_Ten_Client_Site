@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'; // useParams হুক ব্য�
 const ReviewsDetaisPageSpecifick = () => {
     const { id } = useParams(); // প্যারামিটার থেকে _id নেওয়া
     const [reviewDetails, setReviewDetails] = useState(null);
+    console.log(reviewDetails, "Review details page is ");
 
     useEffect(() => {
         // ফেচিং রিভিউ ডেটা
@@ -16,9 +17,11 @@ const ReviewsDetaisPageSpecifick = () => {
         <div className="p-4">
             {reviewDetails ? (
                 <div className="border p-4 rounded shadow">
-                    <h2 className="text-xl font-bold">{reviewDetails.gameTitle}</h2>
+                    <img src={reviewDetails.coverimage}alt="" />
+                    <h2 className="text-xl font-bold text-red-500">title : {reviewDetails.gameTitle}</h2>
                     <p>Rating: {reviewDetails.gameRating}</p>
                     <p>{reviewDetails.description}</p>
+                    <p>{reviewDetails.publishingyear}</p>
                 </div>
             ) : (
                 <p>Loading...</p>

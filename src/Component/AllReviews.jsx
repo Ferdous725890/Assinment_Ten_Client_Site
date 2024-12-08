@@ -8,12 +8,12 @@ const AllReviews = () => {
   const allReviewsData = useLoaderData();
 
   return (
-    <div>
+    <div className="container mx-auto w-11/12" >
       <header>
         <Navbar></Navbar>
       </header>
       <h2>All-Reviews</h2>
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-4">
         {allReviewsData.map((review) => (
           <Reviews key={review._id} review={review}></Reviews>
         ))}

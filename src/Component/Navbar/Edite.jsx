@@ -1,21 +1,20 @@
 import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
+import Swal from "sweetalert2"; // SweetAlert2 Import
+import { FaEdit } from "react-icons/fa"; // React Icon Import
 
 const Edite = () => {
   const review = useLoaderData();
-  console.log(review,"my all reviews");
+  console.log(review, "my all reviews");
   const {
     coverimage,
     description,
     gameRating,
     gameTitle,
     publishingyear,
-
     _id,
   } = review;
-  // data test
-
 
   const { user, userLogOut } = useContext(AuthContext);
 
@@ -45,8 +44,14 @@ const Edite = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
-          alert("Review submitted successfully!");
+        if (data.modifiedCount) {
+          // Show SweetAlert on successful update
+          Swal.fire({
+            title: "Success!",
+            text: "Review updated successfully!",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
           form.reset(); // ✅ Clear form after submission
         }
       })
@@ -130,10 +135,9 @@ const Edite = () => {
                 required
               ></textarea>
             </div>
-            <button type="submit" className="btn btn-primary"
-            onClick={()=>handelUpdateReview(_id)}
-            >
-              Update Reating
+            <button type="submit" className="btn btn-primary">
+              <FaEdit className="mr-2" />
+              Update Rating
             </button>
           </form>
         </div>

@@ -21,7 +21,7 @@ const Navbar = () => {
     <div>
       <div class="navbar bg-base-100 border  justify-between">
         <div class=" border ">
-          <a class="text-xl">Game Review</a>
+          <Link to="/" class="text-xl">Game Review</Link>
           {/* <p className="ml-10 font-bold text"> {user?.email} </p> */}
           <p className="ml-10 font-bold text text red "> {user?.email} </p>
          
