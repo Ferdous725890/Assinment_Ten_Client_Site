@@ -1,4 +1,3 @@
-Here’s a well-structured and beautifully formatted README file for **Chill Gamer 🎮**:  
 
 ---
 
@@ -132,8 +131,7 @@ FIREBASE_API_KEY=your-firebase-api-key
 
 ---
 
-## 🤝 Contributing  
-Contributions are welcome! Feel free to submit **issues, pull requests, or feature suggestions.**  
+
 
 ---
 
@@ -141,5 +139,3 @@ Contributions are welcome! Feel free to submit **issues, pull requests, or featu
 This project is licensed under the **MIT License**.  
 
 ---
-
-Let me know if you’d like any further refinements! 🚀🔥
